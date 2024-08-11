@@ -1,0 +1,240 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+
+local Window = OrionLib:MakeWindow({Name = "Budgie Hub | Slime revenge", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Combat mod",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+ Name = "Lots of coins",
+ Callback = function()
+game.Workspace.DoShopPurchase:InvokeServer(game.Players.LocalPlayer.leaderstats.Coins, -tonumber(999999),"skill3")
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 0)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill0"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 1)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill1"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 2)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill2"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 3)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill3"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 4)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill4"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 5)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill5"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 6)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill6"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 7)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill7"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Spam bow (skill 8)",
+ Callback = function()
+        while true do
+task.wait()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local targetPosition = mouse.Hit.Position
+local args = {
+    [1] = Vector3.new(targetPosition.X, targetPosition.Y, targetPosition.Z),
+    [2] = "skill8"
+}
+
+game:GetService("Players").LocalPlayer.Character.Bow.Shoot.RemoteEvent:FireServer(unpack(args))
+end
+   end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Mining mod",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+ Name = "Teleport in mine",
+ Callback = function()
+        game:GetService("TeleportService"):Teleport(582910565)
+   end    
+})
+
+Tab:AddButton({
+ Name = "Get all minerals",
+ Callback = function()
+        local args = {
+    [1] = 99999,
+    [2] = "Gold"
+}
+
+workspace:WaitForChild("GainMaterial"):InvokeServer(unpack(args))
+
+local args = {
+    [1] = 1,
+    [2] =  "Silver"
+}
+
+workspace:WaitForChild("GainMaterial"):InvokeServer(unpack(args))
+
+local args = {
+    [1] = 1,
+    [2] = "Iron"
+}
+
+workspace:WaitForChild("GainMaterial"):InvokeServer(unpack(args))
+
+local args = {
+    [1] = 1,
+    [2] = "Diamonds"
+}
+
+workspace:WaitForChild("GainMaterial"):InvokeServer(unpack(args))
+
+local args = {
+    [1] = 1,
+    [2] = "Rubys"
+}
+
+workspace:WaitForChild("GainMaterial"):InvokeServer(unpack(args))
+   end    
+})
