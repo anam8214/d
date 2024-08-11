@@ -1,0 +1,291 @@
+local walkspeed = 100 -- set this to the walkspeed you want
+local CashPlus = 500 -- dont set this too high as your money will go minus. does get reset after joining after going negative.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function()
+    local Humanoid = game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid")
+    wait(0.5)
+    for i,v in pairs(getconnections(hum:GetPropertyChangedSignal("WalkSpeed"))) do
+        v:Disable()
+    end
+end)
+
+
+if game.CoreGui:FindFirstChild("Design") then
+    game.CoreGui:FindFirstChild("Design"):Destroy()   
+end 
+
+local speed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
+
+local UIS = game:GetService("UserInputService")
+
+UIS.InputBegan:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.Delete then
+	    wait(0.1)
+		if game.CoreGui:FindFirstChild("Design") then
+		    _G.enabled = false
+            game.CoreGui:FindFirstChild("Design"):Destroy()   
+        end 
+	end
+end)
+
+
+local library = {}
+
+function library:CreateWindow(Name)
+	local Design = Instance.new("ScreenGui")
+	local TopMain = Instance.new("Frame")
+	local Title = Instance.new("TextLabel")
+	local Container = Instance.new("Frame")
+	local UIGridLayout = Instance.new("UIGridLayout")
+    local ToggleVisible = Instance.new("TextButton")
+
+	Design.Name = "Design"
+    Design.Parent = game.CoreGui
+    Design.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    TopMain.Name = "TopMain"
+    TopMain.Parent = Design
+    TopMain.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    TopMain.BorderSizePixel = 0
+    TopMain.Position = UDim2.new(0.243500322, 0, 0.291149676, 0)
+    TopMain.Size = UDim2.new(0, 616, 0, 27)
+    TopMain.Draggable = true
+    TopMain.Active = true
+    
+    Title.Name = "Title"
+    Title.Parent = TopMain
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.Position = UDim2.new(0.31597811, 0, -0.0329630375, 0)
+    Title.Size = UDim2.new(0, 226, 0, 29)
+    Title.Font = Enum.Font.SourceSansBold
+    Title.TextColor3 = Color3.fromRGB(255, 250, 230)
+    Title.TextSize = 20.000
+    Title.Text = Name
+    
+    Container.Name = "Container"
+    Container.Parent = TopMain
+    Container.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
+    Container.BorderSizePixel = 0
+    Container.ClipsDescendants = true
+    Container.Position = UDim2.new(0, 0, 0.994073927, 0)
+    Container.Size = UDim2.new(0, 616, 0, 313)
+
+	UIGridLayout.Parent = Container
+	UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIGridLayout.CellSize = UDim2.new(0, 150, 0, 40)
+
+    ToggleVisible.Name = "ToggleVisible"
+    ToggleVisible.Parent = TopMain
+    ToggleVisible.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ToggleVisible.BackgroundTransparency = 1.000
+    ToggleVisible.BorderSizePixel = 0
+    ToggleVisible.Position = UDim2.new(0.948067904, 0, 0, 0)
+    ToggleVisible.Size = UDim2.new(0, 29, 0, 27)
+    ToggleVisible.Font = Enum.Font.SourceSansBold
+    ToggleVisible.Text = "V"
+    ToggleVisible.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ToggleVisible.TextSize = 14.000
+    ToggleVisible.Rotation = 180
+    ToggleVisible.MouseButton1Click:Connect(function()
+        if toggled then
+            toggled = false
+            Container:TweenSize(UDim2.new(0, 616,0, 313), "InOut", "Linear", 0.1)
+            ToggleVisible.Rotation = 180
+        else
+            toggled = true
+            Container:TweenSize(UDim2.new(0, 616,0, 0), "InOut", "Linear", 0.1)
+            ToggleVisible.Rotation = 0
+        end
+    end)
+
+	local EpicLibrary = {}
+
+	function EpicLibrary:CreateButton(Text, callback)
+        local callback = callback or function() end
+
+		local TextButton = Instance.new("TextButton")
+
+		TextButton.Parent = Container
+		TextButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		TextButton.BorderSizePixel = 0
+		TextButton.Position = UDim2.new(0.770330191, 0, 0.694760561, 0)
+		TextButton.Size = UDim2.new(0, 106, 0, 49)
+		TextButton.Font = Enum.Font.Ubuntu
+		TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextButton.TextSize = 14.000
+		TextButton.Text = Text
+
+        TextButton.MouseButton1Click:Connect(function()
+            pcall(callback)
+        end)    
+	end
+
+	function EpicLibrary:CreateToggle(text, callback)
+		local actions = {}
+		local enabled = false
+
+		text = text or "New Toggle"
+		callback = callback or function() end
+
+		local Toggle = Instance.new("TextLabel")
+		local Background = Instance.new("TextButton")
+		local OnOffToggle = Instance.new("TextButton")
+
+		Toggle.Name = "Toggle"
+		Toggle.Parent = Container
+		Toggle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+		Toggle.BorderSizePixel = 0
+		Toggle.Size = UDim2.new(0, 200, 0, 50)
+		Toggle.Font = Enum.Font.Ubuntu
+		Toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Toggle.TextSize = 14.000
+		Toggle.TextXAlignment = Enum.TextXAlignment.Left
+		Toggle.Text = "   "..text
+
+		Background.Name = "Background"
+		Background.Parent = Toggle
+		Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Background.BorderSizePixel = 0
+		Background.Position = UDim2.new(0.713333309, 0, 0.275000006, 0)
+		Background.Size = UDim2.new(0, 36, 0, 18)
+		Background.Font = Enum.Font.SourceSans
+		Background.Text = ""
+		Background.TextColor3 = Color3.fromRGB(0, 0, 0)
+		Background.TextSize = 14.000
+
+		OnOffToggle.Name = "OnOffToggle"
+		OnOffToggle.Parent = Background
+		OnOffToggle.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
+		OnOffToggle.BorderSizePixel = 0
+		OnOffToggle.Position = UDim2.new(0, 0, 0, 0)
+		OnOffToggle.Size = UDim2.new(0, 18, 0, 18)
+		OnOffToggle.Font = Enum.Font.SourceSans
+		OnOffToggle.Text = ""
+		OnOffToggle.TextColor3 = Color3.fromRGB(0,255,0)
+		OnOffToggle.TextSize = 14.000
+
+		local function Fire()
+			enabled = not enabled
+			OnOffToggle:TweenPosition(enabled and UDim2.new(0.5,0,0,0) or UDim2.new(0,0,0,0), "InOut", "Linear", 0.1) 
+			OnOffToggle.BackgroundColor3 = enabled and Color3.fromRGB(0,255,0) or Color3.new(255,0,0)
+			pcall(callback, enabled)
+		end
+
+		OnOffToggle.MouseButton1Click:Connect(Fire)
+		Background.MouseButton1Click:Connect(Fire)
+
+		function actions:Set(arg)
+			OnOffToggle:TweenPosition(enabled and UDim2.new(0.5,0,0,0) or UDim2.new(0,0,0,0), "InOut", "Linear", 0.1) 
+			OnOffToggle.BackgroundColor3 = enabled and Color3.fromRGB(0,255,0) or Color3.new(255,0,0)
+			pcall(callback, arg)
+		end
+		
+	    function rainbow()
+            while Title do
+	            wait()
+	            Title.TextColor3 = Color3.fromHSV(tick()%5/5,1,1)
+	            for i,v in pairs(Container:GetChildren()) do
+	                if v.ClassName == "TextButton" or v.ClassName == "TextLabel" then
+	                    v.TextColor3 = Color3.fromHSV(tick()%5/5,1,1)
+	                end
+	            end
+	        end 
+	    end 
+
+	end
+	return EpicLibrary
+end
+
+local main = library:CreateWindow("Revenge of the slimes")
+main:CreateButton("Kill all", function()
+for i,v in pairs(game:GetService("Workspace").Slimes:GetChildren()) do
+local ohVector31 = v.Slime.CFrame.Position
+local ohString2 = "skill8"
+
+workspace.RogueBlocks56.Bow.Shoot.RemoteEvent:FireServer(ohVector31, ohString2)
+wait()
+end    
+end)
+
+main:CreateToggle("WalkSpeed",function(state)
+    _G.enabled = state
+    UIS.InputBegan:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.Delete then
+            _G.enabled = false    
+        end 
+    end)
+    while _G.enabled do
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walkspeed
+        wait(0.01)
+    end
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+end)
+
+main:CreateToggle("Build", function(state)
+    _G.enabled = state
+    UIS.InputBegan:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.Delete then
+            _G.enabled = false    
+        end 
+    end)
+    while _G.enabled do
+        local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
+        local ohString2 = "Part"
+
+        game.Players.LocalPlayer.Character.Build.Place:InvokeServer(ohCFrame1, ohString2)    
+        wait(0)
+    end
+end)
+
+main:CreateButton("Give All Bows", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/HTf9K4GN",true))()    
+    local plr = game:GetService("Players").LocalPlayer
+    
+    plr.Skill1.Value = true
+    plr.Skill2.Value = true
+    plr.Skill3.Value = true
+    plr.Skill4.Value = true
+    plr.Skill5.Value = true
+    plr.Skill6.Value = true
+    plr.Skill7.Value = true
+    plr.Skill8.Value = true
+    plr["Arrow 2"].Value = true
+    plr["Arrow 3"].Value = true
+    plr["Arrow 4"].Value = true
+    plr["Arrow 5"].Value = true
+    plr["Arrow 6"].Value = true
+    plr["Arrow 7"].Value = true
+    plr["Arrow 8"].Value = true
+    plr["Arrow 9"].Value = true
+    plr["Arrow 10"].Value = true
+    plr["Arrow 11"].Value = true
+end)
+
+main:CreateButton("Item Giver", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Luke-King56/Item-Giver/main/Giver",true))();    
+end)
+
+main:CreateButton("Give money", function()
+    game.Workspace.DoShopPurchase:InvokeServer(game.Players.LocalPlayer.leaderstats.Coins, -tonumber(CashPlus),"skill3")
+end)
+
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Zapsâ¢: UI Library", Text = "Press 'Delete' to purge UI Â©Zaps", Icon = "", Duration = 3})
+rainbow()
