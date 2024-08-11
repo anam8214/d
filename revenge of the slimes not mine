@@ -247,7 +247,7 @@ main:CreateToggle("Build Spike Walls", function(state)
         end 
     end)
     while _G.enabled do
-        local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
+        local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,-2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
         local ohString2 = "Spike Wall"
 
         game.Players.LocalPlayer.Character.Build.Place:InvokeServer(ohCFrame1, ohString2)    
@@ -263,7 +263,7 @@ main:CreateToggle("Build Blasters", function(state)
         end 
     end)
     while _G.enabled do
-        local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
+        local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,-2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
         local ohString2 = "Dart Blaster"
 
         game.Players.LocalPlayer.Character.Build.Place:InvokeServer(ohCFrame1, ohString2)    
