@@ -239,7 +239,7 @@ main:CreateToggle("WalkSpeed",function(state)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
 end)
 
-main:CreateToggle("Build", function(state)
+main:CreateToggle("Build Parts", function(state)
     _G.enabled = state
     UIS.InputBegan:Connect(function(input)
         if input.KeyCode == Enum.KeyCode.Delete then
@@ -249,6 +249,22 @@ main:CreateToggle("Build", function(state)
     while _G.enabled do
         local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
         local ohString2 = "Part"
+
+        game.Players.LocalPlayer.Character.Build.Place:InvokeServer(ohCFrame1, ohString2)    
+        wait(0)
+    end
+end)
+
+main:CreateToggle("Build Blasters", function(state)
+    _G.enabled = state
+    UIS.InputBegan:Connect(function(input)
+        if input.KeyCode == Enum.KeyCode.Delete then
+            _G.enabled = false    
+        end 
+    end)
+    while _G.enabled do
+        local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
+        local ohString2 = "Dart Blaster"
 
         game.Players.LocalPlayer.Character.Build.Place:InvokeServer(ohCFrame1, ohString2)    
         wait(0)
