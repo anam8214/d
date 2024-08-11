@@ -9,16 +9,16 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddButton({
- Name = "10 coins",
+ Name = "50 coins",
  Callback = function()
-game.Workspace.DoShopPurchase:InvokeServer(game.Players.LocalPlayer.leaderstats.Coins, -tonumber(500),"skill3")
+game.Workspace.DoShopPurchase:InvokeServer(game.Players.LocalPlayer.leaderstats.Coins, -tonumber(50),"skill3")
    end    
 })
 
 Tab:AddButton({
  Name = "7 coins",
  Callback = function()
-game.Workspace.DoShopPurchase:InvokeServer(game.Players.LocalPlayer.leaderstats.Coins, -tonumber(500),"skill3")
+game.Workspace.DoShopPurchase:InvokeServer(game.Players.LocalPlayer.leaderstats.Coins, -tonumber(7),"skill3")
    end    
 })
 
