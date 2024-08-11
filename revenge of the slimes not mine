@@ -239,7 +239,7 @@ main:CreateToggle("WalkSpeed",function(state)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
 end)
 
-main:CreateToggle("Build Parts", function(state)
+main:CreateToggle("Build Spike Walls", function(state)
     _G.enabled = state
     UIS.InputBegan:Connect(function(input)
         if input.KeyCode == Enum.KeyCode.Delete then
@@ -248,7 +248,7 @@ main:CreateToggle("Build Parts", function(state)
     end)
     while _G.enabled do
         local ohCFrame1 = game.Players.LocalPlayer.Character.Head.CFrame + Vector3.new(0,2,0) + game.Players.LocalPlayer.Character.Head.CFrame.lookVector * 3
-        local ohString2 = "Part"
+        local ohString2 = "Spike Wall"
 
         game.Players.LocalPlayer.Character.Build.Place:InvokeServer(ohCFrame1, ohString2)    
         wait(0)
